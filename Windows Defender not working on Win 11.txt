@@ -1,0 +1,33 @@
+Hello guys, Developer Vaibhav here.
+If you are facing issues with Windows defender in Windows11 I will solve your issue.
+ 
+If you are not able to open Defender settings :
+
+1.Open powershell as ADMINISTRATOR from search menu.
+2.Enter the given code:
+
+CODE:
+
+Get-AppxPackage Microsoft.SecHealthUI -AllUsers | Reset-AppxPackage
+
+After this you have to press enter. After the successful execution you wont see any statement appearing inyour POWERSHELL with RED COLOR. then you are good to go.
+
+If you get statement in RED COLOR like:
+
+
+"Reset-AppxPackage : Package was not found.
+Windows cannot remove Microsoft.SecHealthUI_1000.22000.1.0_neutral__8wekyb3d8bbwe because the current user does not have that package installed. Use Get-AppxPackage to see the list of packages installed.
+At line:1 char:51
++ Get-AppxPackage Microsoft.SecHealthUI -AllUsers | Reset-AppxPackage
++ ~~~~~~~~~~~~~~~~~
++ CategoryInfo : NotSpecified: (:) [Reset-AppxPackage], COMException
++ FullyQualifiedErrorId : System.Runtime.InteropServices.COMException,Microsoft.Windows.Appx.PackageManager.Commands.ResetAppxPackageCommand"
+
+
+then you have to enter 1 more code :
+
+add-appxpackage -disabledevelopmentmode -register ((Get-AppxPackage Microsoft.SecHealthUI -allusers).InstallLocation + '\AppxManifest.xml')
+
+after this you're done.
+
+Contact me if you have any queries regarding this on: +91-9970252631 or you can reach out to me through e-mail: dev.vaibhavk@gmail.com
